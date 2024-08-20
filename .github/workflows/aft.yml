@@ -99,7 +99,7 @@ jobs:
          # export bucket="my-terraform-bucket"
          # export key="path/to/terraform.tfstate"
          # export dynamodb_table="terraform-lock-table"
-         # export kms_key_id="alias/my-kms-key"
+         # export kms_key_id="2a4793da-cc25-4f35-98c5-eb06d62088f4"
           # export aft_admin_role_arn="arn:aws:iam::575108919022:role/AFT"          
           # export terraform_org_name="my-org"
          # export terraform_workspace_name="my-workspace"
