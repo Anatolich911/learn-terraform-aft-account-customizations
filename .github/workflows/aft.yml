@@ -85,20 +85,11 @@ jobs:
 
       - name: Create Terraform Configuration Files
         run: |
-          cd sandbox/terraform
-          pwd
-          for f in *.jinja; do
-            jinja2 $f \
-              -D timestamp="${{ env.TIMESTAMP }}" \
-              -D tf_distribution_type=${{ env.TF_DISTRIBUTION }} \
-              -D region=${{ env.CT_MGMT_REGION }} \
-              -D provider_region=${{ env.CT_MGMT_REGION }} \
-              -D bucket="your-s3-bucket" \
-              -D key="your-key" \
-              -D dynamodb_table="your-dynamodb-table" \
-              -D kms_key_id="your-kms-key-id" \
-              -D aft_admin_role_arn="arn:aws:iam::${{ env.AFT_MGMT_ACCOUNT }}:role/${{ env.AFT_ADMIN_ROLE_NAME }}" \
-              -D tf_version=${{ env.TF_VERSION }} >> ./$(basename $f .jinja).tf
+          cd ${GITHUB_WORKSPACE}/sandbox/terraform
+
+          for f in sandbox/terraform/*.jinja; do
+            filename=$(basename "$f" .jinja)    # Extract the base filename without the .jinja extension
+            envsubst < "$f" > "sandbox/terraform/$filename.tf"  # Substitute variables and redirect output to the .tf file
           done
 
       - name: Run Terraform Init and Plan
