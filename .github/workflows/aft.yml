@@ -120,7 +120,7 @@ jobs:
       #                 -D terraform_org_name="my-org" \
       #                 -D terraform_workspace_name="my-workspace" \
       #                 -D tf_distribution_type="oss" > "$filename.tf"
-          done
+          # done
 
       - name: Run Terraform Init and Plan
         run: |
