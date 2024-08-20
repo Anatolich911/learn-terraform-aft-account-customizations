@@ -85,8 +85,8 @@ jobs:
 
       - name: Create Terraform Configuration Files
         run: |
-         cd ${GITHUB_WORKSPACE}/sandbox/terraform
-
+          cd ${GITHUB_WORKSPACE}/sandbox/terraform
+          ls -la 
           for f in *.jinja; do
             filename=$(basename "$f" .jinja)    # Extract the base filename without the .jinja extension
             envsubst < "$f" > "$filename.tf"  # Substitute variables and redirect output to the .tf file
