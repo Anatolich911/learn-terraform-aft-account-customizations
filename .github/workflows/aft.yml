@@ -85,7 +85,7 @@ jobs:
 
       - name: Create Terraform Configuration Files
         run: |
-          cd aws-aft-core-framework
+          cd sandbox/terraform
           for f in *.jinja; do
             jinja2 $f \
               -D timestamp="${{ env.TIMESTAMP }}" \
