@@ -28,6 +28,16 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y jq python3-pip unzip
 
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'  # Specify the Python version
+
+      - name: Install dependencies (Jinja2)
+        run: |
+          python -m pip install --upgrade pip
+          pip install jinja2-cli
+
       - name: Retrieve Parameters from SSM
         id: ssm-parameters
         run: |
