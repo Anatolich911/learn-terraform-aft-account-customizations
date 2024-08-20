@@ -92,34 +92,34 @@ jobs:
           curl -o terraform_${{ env.TF_VERSION }}_linux_amd64.zip https://releases.hashicorp.com/terraform/${{ env.TF_VERSION }}/terraform_${{ env.TF_VERSION }}_linux_amd64.zip
           unzip -o terraform_${{ env.TF_VERSION }}_linux_amd64.zip && sudo mv terraform /usr/local/bin
           terraform -version
-      - name: Set up environment
-        run: |
-          export region="us-east-2"
-          export tf_distribution_type="oss"  # or "cloud" based on your use case
-          export kms_key_id="2a4793da-cc25-4f35-98c5-eb06d62088f4"
-          export bucket="my-terraform-bucket"
-          export key="path/to/terraform.tfstate"
-          export dynamodb_table="terraform-lock-table"
-          export kms_key_id="2a4793da-cc25-4f35-98c5-eb06d62088f4"
-          export aft_admin_role_arn="arn:aws:iam::575108919022:role/AFT"          
-          # export terraform_org_name="my-org"
-         # export terraform_workspace_name="my-workspace"
+      # - name: Set up environment
+      #   run: |
+      #     export region="us-east-2"
+      #     export tf_distribution_type="oss"  # or "cloud" based on your use case
+      #     export kms_key_id="2a4793da-cc25-4f35-98c5-eb06d62088f4"
+      #     export bucket="my-terraform-bucket"
+      #     export key="path/to/terraform.tfstate"
+      #     export dynamodb_table="terraform-lock-table"
+      #     export kms_key_id="2a4793da-cc25-4f35-98c5-eb06d62088f4"
+      #     export aft_admin_role_arn="arn:aws:iam::575108919022:role/AFT"          
+      #     # export terraform_org_name="my-org"
+      #    # export terraform_workspace_name="my-workspace"
 
 
-      - name: Process Jinja2 templates
-        run: |
-          cd ${GITHUB_WORKSPACE}/sandbox/terraform
-          for f in *.jinja; do
-            filename=$(basename "$f" .jinja)
-            jinja2 "$f" -D region="us-east-2" \
-                      -D bucket="my-terraform-bucket" \
-                      -D key="path/to/terraform.tfstate" \
-                      -D dynamodb_table="terraform-lock-table" \
-                      -D kms_key_id="alias/my-kms-key" \
-                      -D aft_admin_role_arn="arn:aws:iam::123456789012:role/MyAFTAdminRole" \
-                      -D terraform_org_name="my-org" \
-                      -D terraform_workspace_name="my-workspace" \
-                      -D tf_distribution_type="oss" > "$filename.tf"
+      # - name: Process Jinja2 templates
+      #   run: |
+      #     cd ${GITHUB_WORKSPACE}/sandbox/terraform
+      #     for f in *.jinja; do
+      #       filename=$(basename "$f" .jinja)
+      #       jinja2 "$f" -D region="us-east-2" \
+      #                 -D bucket="my-terraform-bucket" \
+      #                 -D key="path/to/terraform.tfstate" \
+      #                 -D dynamodb_table="terraform-lock-table" \
+      #                 -D kms_key_id="alias/my-kms-key" \
+      #                 -D aft_admin_role_arn="arn:aws:iam::123456789012:role/MyAFTAdminRole" \
+      #                 -D terraform_org_name="my-org" \
+      #                 -D terraform_workspace_name="my-workspace" \
+      #                 -D tf_distribution_type="oss" > "$filename.tf"
           done
 
       - name: Run Terraform Init and Plan
