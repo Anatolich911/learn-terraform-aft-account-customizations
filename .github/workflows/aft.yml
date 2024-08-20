@@ -85,7 +85,7 @@ jobs:
 
       - name: Create Terraform Configuration Files
         run: |
-          cd ${GITHUB_WORKSPACE}/sandbox/terraform
+         
 
           for f in sandbox/terraform/*.jinja; do
             filename=$(basename "$f" .jinja)    # Extract the base filename without the .jinja extension
