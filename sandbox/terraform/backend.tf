@@ -6,7 +6,7 @@ terraform {
     key            = "account-provisioning-customizations/terraform.tfstate"
     dynamodb_table = "aft-backend-739153323366"
     encrypt        = "true"
-    kms_key_id     = "556bce9d-6c3b-4ac3-93bc-44ea8e15d0df"
+    kms_key_id     = "5d9e00f4-9254-4156-a326-6b640e79f485"
     role_arn       = "arn:aws:iam::739153323366:role/AWSAFTExecutions"
   }
 }
