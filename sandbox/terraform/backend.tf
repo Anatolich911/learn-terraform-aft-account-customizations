@@ -2,7 +2,7 @@ terraform {
   required_version = ">= 0.15.0"
   backend "s3" {
     region         = "us-east-2"
-    bucket         = "aft-backend-739153323366-primary-region"
+    bucket         = "aft-backend-509399597335-primary-region"
     key            = "account-provisioning-customizations/terraform.tfstate"
     dynamodb_table = "aft-backend-739153323366"
     encrypt        = "true"
