@@ -1,7 +1,7 @@
 provider "aws" {
   region = "us-east-2"
   assume_role {
-    role_arn    = "arn:aws:iam::739153323366:role/AWSAFTExecutions"
+    role_arn    = "arn:aws:iam::739153323366:role/AFT"
   }
   default_tags {
     tags = {
