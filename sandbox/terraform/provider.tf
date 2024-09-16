@@ -1,7 +1,7 @@
 provider "aws" {
   region = "us-east-2"
   assume_role {
-    role_arn    = "arn:aws:iam::575108919022:role/AWSAFTExecution"
+    role_arn    = "arn:aws:iam::739153323366:role/AWSAFTExecution"
   }
   default_tags {
     tags = {
